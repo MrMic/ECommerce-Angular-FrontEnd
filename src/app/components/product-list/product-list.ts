@@ -7,13 +7,14 @@ import { CurrencyPipe } from '@angular/common';
   selector: 'app-product-list',
   standalone: true,
   imports: [CurrencyPipe],
-  templateUrl: './product-list.html',
+  templateUrl: './product-list-table.html',
+  // templateUrl: './product-list.html',
   styleUrl: './product-list.css',
 })
 export class ProductList implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.listProducts();
