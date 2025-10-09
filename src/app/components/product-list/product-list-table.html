@@ -9,6 +9,9 @@
   <tbody>
     @for (tempProduct of products; track $index) {
       <tr>
+        <td class="align-middle">
+          <img src="{{ tempProduct.imageUrl }}" height="50" />
+        </td>
         <td>{{ tempProduct.name }}</td>
         <td>{{ tempProduct.unitPrice | currency: 'USD' }}</td>
         <td>{{ tempProduct.unitsInStock }}</td>

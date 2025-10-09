@@ -10,7 +10,7 @@ import { Product } from '../common/product';
 export class ProductService {
   private baseUrl = 'http://localhost:8080/api/products';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getProductList(): Observable<Product[]> {
     return this.httpClient
@@ -19,7 +19,7 @@ export class ProductService {
   }
 }
 
-// ╾╼ * INFO: INTERFACES ╾────────────────────────────────────────────╼
+// * INFO: INTERFACES ╾────────────────────────────────────────────╼
 interface GetResponse {
   _embedded: {
     products: Product[];
