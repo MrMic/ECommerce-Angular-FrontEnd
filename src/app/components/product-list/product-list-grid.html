@@ -1,21 +1,27 @@
-<table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Units in Stock</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (tempProduct of products; track $index) {
-      <tr>
-        <td class="align-middle">
-          <img src="{{ tempProduct.imageUrl }}" height="50" />
-        </td>
-        <td>{{ tempProduct.name }}</td>
-        <td>{{ tempProduct.unitPrice | currency: 'USD' }}</td>
-        <td>{{ tempProduct.unitsInStock }}</td>
-      </tr>
-    }
-  </tbody>
-</table>
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- LOOP OVER THE COLLECTION OF PRODUCTS -->
+        @for (tempProduct of products; track $index) {
+          <div class="col-md-3">
+            <div class="product-box">
+              <img src="{{ tempProduct.imageUrl }}" alt="" class="image-responsive" />
+              <div class="product-btm">
+                <h1>
+                  <a href="#">{{ tempProduct.name }}</a>
+                </h1>
+                <div class="price">
+                  <span>{{ tempProduct.unitPrice | currency: 'USD' }}</span>
+                </div>
+                <a href="#" class="primary-btn">Add to Cart</a>
+              </div>
+            </div>
+          </div>
+        }
+
+        <p>I have work to do.</p>
+      </div>
+    </div>
+  </div>
+</div>
