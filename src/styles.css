@@ -334,6 +334,11 @@ input.au-input.au-input-xl {
   overflow-y: auto;
 }
 
+.page-container {
+  background: #e5e5e5;
+  padding-left: 200px;
+}
+
 .menu-sidebar .logo {
   background: #fff;
   height: 75px;
