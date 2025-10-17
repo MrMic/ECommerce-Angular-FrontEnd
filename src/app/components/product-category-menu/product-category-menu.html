@@ -1,1 +1,15 @@
-<p>product-category-menu works!</p>
+<div class="menu-sidebar-content js-scrollbar1">
+  <nav class="navbar-sidebar">
+    <ul class="list-unstyled navbar-list">
+      @for (tempProductCategory of productCategories; track tempProductCategory.id) {
+        <li>
+          <a routerLink="/category/{{ tempProductCategory.id }}" routerLinkActive="active-link">
+            {{ tempProductCategory.categoryName }}
+          </a>
+        </li>
+      } @empty {
+        <li>Loading categories...</li>
+      }
+    </ul>
+  </nav>
+</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Product } from '../common/product';
 import { ProductCategory } from '../common/product-category';
 
@@ -23,9 +23,13 @@ export class ProductService {
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
-    return this.httpClient
-      .get<GetResponseProductCategory>(this.categoryUrl)
-      .pipe(map((response) => response._embedded.productCategory));
+    return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
+      map((response) => response._embedded.productCategory),
+      catchError((error) => {
+        console.error('Error fetching product categories:', error);
+        return of([]); // Return an empty array to prevent breaking the app
+      }),
+    );
   }
 }
 
