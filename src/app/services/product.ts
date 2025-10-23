@@ -44,6 +44,11 @@ export class ProductService {
       }),
     );
   }
+
+  //   ______________________________________________________________________
+  getProduct(theProductId: number) {
+    throw new Error('Method not implemented.');
+  }
 }
 
 // * INFO: INTERFACES ╾────────────────────────────────────────────╼
