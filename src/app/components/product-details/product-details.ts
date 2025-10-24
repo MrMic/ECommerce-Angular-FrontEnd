@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../services/product';
 import { Product } from '../../common/product';
 import { ActivatedRoute } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './product-details.html',
   styleUrl: './product-details.css',
 })
