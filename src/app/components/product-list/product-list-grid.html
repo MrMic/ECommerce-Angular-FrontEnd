@@ -28,6 +28,29 @@
           <div class="alert alert-warning col-md-12" role="alert">No products found.</div>
         }
       </div>
+
+      <!-- PAGINATION BAR -->
+      <div class="pagination-bar">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-9 padding-left: 30%">
+                <ngb-pagination
+                  [collectionSize]="theTotalElements"
+                  [(page)]="thePageNumber"
+                  [pageSize]="thePageSize"
+                  [maxSize]="5"
+                  [boundaryLinks]="true"
+                  (pageChange)="listProducts()"
+                >
+                </ngb-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END PAGINATION BAR -->
     </div>
   </div>
 </div>
