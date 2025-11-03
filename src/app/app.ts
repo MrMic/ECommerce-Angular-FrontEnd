@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { ProductCategoryMenu } from './components/product-category-menu/product-category-menu';
 import { Search } from './components/search/search';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartStatus } from './components/cart-status/cart-status';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProductCategoryMenu, Search, NgbModule],
+  imports: [RouterOutlet, ProductCategoryMenu, Search, NgbModule, CartStatus],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
