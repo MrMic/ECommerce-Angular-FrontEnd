@@ -106,6 +106,13 @@ export class ProductList implements OnInit {
     this.listProducts();
   }
 
+  //   ______________________________________________________________________
+  addToCart(theProduct: Product) {
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+    // TODO: Do the real stuff
+  }
+
+  //   ______________________________________________________________________
   processResult() {
     return (data: any) => {
       this.products = data._embedded.products;
