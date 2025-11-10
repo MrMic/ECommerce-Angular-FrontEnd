@@ -11,6 +11,7 @@ export class CartService {
   totalPrice: Subject<number> = new Subject<number>();
   totalQuantity: Subject<number> = new Subject<number>();
 
+  // ______________________________________________________________________
   addToCart(theCartItem: CartItem) {
     const existingCartItem = this.cartItems.find(
       (tempCartItem) => tempCartItem.id === theCartItem.id,
@@ -25,6 +26,7 @@ export class CartService {
     this.computeCartTotals();
   }
 
+  // ______________________________________________________________________
   computeCartTotals() {
     let totalPriceValue: number = 0;
     let totalQuantityValue: number = 0;
@@ -41,6 +43,7 @@ export class CartService {
     // * INFO: log cart data just for debugging purposes
     this.logCartData(totalPriceValue, totalQuantityValue);
   }
+  // ______________________________________________________________________
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
     console.log('Contents of the cart');
     for (let tempCartItem of this.cartItems) {
