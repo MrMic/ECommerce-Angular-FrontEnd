@@ -45,4 +45,9 @@ export class CartDetails implements OnInit {
   incrementQuantity(theCartItem: CartItem) {
     this.cartService.addToCart(theCartItem);
   }
+
+  // ______________________________________________________________________
+  remove(theCartItem: CartItem) {
+    this.cartService.remove(theCartItem);
+  }
 }
