@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
@@ -8,12 +8,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 	templateUrl: "./checkout.html",
 	styleUrl: "./checkout.css",
 })
-export class Checkout implements OnInit {
+export class Checkout {
 	checkoutFormGroup: FormGroup;
 
-	constructor(private formBuilder: FormBuilder) {}
-
-	ngOnInit(): void {
+	constructor(private formBuilder: FormBuilder) {
 		this.checkoutFormGroup = this.formBuilder.group({
 			customer: this.formBuilder.group({
 				firstName: [""],
