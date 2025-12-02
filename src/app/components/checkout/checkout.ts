@@ -27,6 +27,13 @@ export class Checkout {
         zipCode: [""],
       }),
       billingAddress: this.formBuilder.group({
+        street: [""],
+        city: [""],
+        state: [""],
+        country: [""],
+        zipCode: [""],
+      }),
+      creditCard: this.formBuilder.group({
         cardType: [""],
         nameOnCard: [""],
         cardNumber: [""],
@@ -34,20 +41,23 @@ export class Checkout {
         expirationMonth: [""],
         expirationYear: [""],
       }),
-      creditCard: this.formBuilder.group({
-        street: [""],
-        city: [""],
-        state: [""],
-        country: [""],
-        zipCode: [""],
-      })
     });
   }
 
   // ______________________________________________________________________
+  copyShippingAddressToBillingAddress(event: Event) {
+    const target = event.target as HTMLInputElement | null;
+    if (target?.checked) {
+      this.checkoutFormGroup.controls["billingAddress"].setValue(
+        this.checkoutFormGroup.controls["shippingAddress"].value);
+    } else {
+      this.checkoutFormGroup.controls["billingAddress"].reset();
+    }
+  }
+
+  // ______________________________________________________________________
   onSubmit() {
-    console.log("Handling the submit button");
+    console.log("Handling ths submit group");
     console.log(this.checkoutFormGroup.get("customer")?.value);
-    console.log("Email is: " + this.checkoutFormGroup.get("customer")?.value.email);
   }
 }
