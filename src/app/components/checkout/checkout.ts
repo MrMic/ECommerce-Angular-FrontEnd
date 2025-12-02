@@ -19,6 +19,28 @@ export class Checkout {
         lastName: [""],
         email: [""],
       }),
+      shippingAddress: this.formBuilder.group({
+        street: [""],
+        city: [""],
+        state: [""],
+        country: [""],
+        zipCode: [""],
+      }),
+      billingAddress: this.formBuilder.group({
+        cardType: [""],
+        nameOnCard: [""],
+        cardNumber: [""],
+        securityCode: [""],
+        expirationMonth: [""],
+        expirationYear: [""],
+      }),
+      creditCard: this.formBuilder.group({
+        street: [""],
+        city: [""],
+        state: [""],
+        country: [""],
+        zipCode: [""],
+      })
     });
   }
 
