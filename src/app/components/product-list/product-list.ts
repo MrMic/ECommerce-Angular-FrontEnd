@@ -31,7 +31,7 @@ export class ProductList implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-  ) { }
+  ) {}
 
   //   ______________________________________________________________________
   ngOnInit(): void {

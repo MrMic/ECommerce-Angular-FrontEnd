@@ -52,9 +52,7 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="country">
-                  <option>
-                    TODO
-                  </option>
+                  <option>TODO</option>
                 </select>
               </div>
             </div>
@@ -89,9 +87,7 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
-                  <option>
-                    TODO
-                  </option>
+                  <option>TODO</option>
                 </select>
               </div>
             </div>
@@ -129,9 +125,7 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="country">
-                  <option>
-                    TODO
-                  </option>
+                  <option>TODO</option>
                 </select>
               </div>
             </div>
@@ -166,9 +160,7 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
-                  <option>
-                    TODO
-                  </option>
+                  <option>TODO</option>
                 </select>
               </div>
             </div>
@@ -197,12 +189,8 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="cardType">
-                  <option>
-                    VISA
-                  </option>
-                  <option>
-                    MASTERCARD
-                  </option>
+                  <option>VISA</option>
+                  <option>MASTERCARD</option>
                 </select>
               </div>
             </div>
@@ -259,9 +247,7 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="expirationMonth">
-                  <option>
-                    TODO
-                  </option>
+                  <option>TODO</option>
                 </select>
               </div>
             </div>
@@ -274,14 +260,20 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="expirationYear">
-                  <option>
-                    TODO
-                  </option>
+                  <option>TODO</option>
                 </select>
               </div>
             </div>
           </div>
+        </div>
 
+        <!-- Order details -->
+        <div class="form-area">
+          <h3>Review Your Order</h3>
+
+          <p>Total Quantity: {{ totalQuantity }}</p>
+          <p>Shipping: FREE</p>
+          <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
         </div>
 
         <!-- submit button -->
