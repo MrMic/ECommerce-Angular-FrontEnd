@@ -1,6 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Luv2ShopFormService } from '../../services/luv2-shop-form.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,9 +15,14 @@ export class Checkout {
 
   totalPrice: number = 0;
   totalQuantity: number = 0;
+  creditCardYears: number[] = [];
+  creditCardMonths: number[] = [];
 
   // * INFO: CONSTRUCTOR __________________________________________________
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private luv2ShopFormService: Luv2ShopFormService,
+  ) {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: [''],
@@ -45,6 +51,22 @@ export class Checkout {
         expirationMonth: [''],
         expirationYear: [''],
       }),
+    });
+
+    // INFO: populate credit card months
+    const startMonth: number = new Date().getMonth() + 1;
+    console.log('startMonth: ' + startMonth);
+
+    this.luv2ShopFormService.getCreditCardMonths(startMonth).subscribe((data: number[]) => {
+      console.log('🪚 Retrieved credit card months:', JSON.stringify(data));
+      // console.log('Retrieved credit card months: ' + JSON.stringify(data));
+      this.creditCardMonths = data;
+    });
+
+    // INFO: populate credit card years
+    this.luv2ShopFormService.getCreditCardYears().subscribe((data: number[]) => {
+      console.log('Retrieved credit card years: ' + JSON.stringify(data));
+      this.creditCardYears = data;
     });
   }
 
