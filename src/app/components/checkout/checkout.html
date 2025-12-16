@@ -247,7 +247,9 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="expirationMonth">
-                  <option>TODO</option>
+                  @for (month of creditCardMonths; track month) {
+                    <option>{{ month }}</option>
+                  }
                 </select>
               </div>
             </div>
@@ -260,7 +262,9 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="expirationYear">
-                  <option>TODO</option>
+                  @for (year of creditCardYears; track year) {
+                    <option>{{ year }}</option>
+                  }
                 </select>
               </div>
             </div>
