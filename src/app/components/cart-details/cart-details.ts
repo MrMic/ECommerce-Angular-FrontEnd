@@ -17,7 +17,7 @@ export class CartDetails implements OnInit {
   totalQuantity: number = 0;
 
   // ______________________________________________________________________
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {}
 
   // ______________________________________________________________________
   ngOnInit(): void {
