@@ -2,6 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Luv2ShopFormService } from '../../services/luv2-shop-form.service';
+import { Country } from '../../common/country';
 
 @Component({
   selector: 'app-checkout',
@@ -18,7 +19,9 @@ export class Checkout {
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
 
-  // * INFO: CONSTRUCTOR __________________________________________________
+  countries: Country[] = [];
+
+  // *INFO: CONSTRUCTOR __________________________________________________
   constructor(
     private formBuilder: FormBuilder,
     private luv2ShopFormService: Luv2ShopFormService,
@@ -67,6 +70,12 @@ export class Checkout {
     this.luv2ShopFormService.getCreditCardYears().subscribe((data: number[]) => {
       console.log('Retrieved credit card years: ' + JSON.stringify(data));
       this.creditCardYears = data;
+    });
+
+    // INFO: populate countries
+    this.luv2ShopFormService.getCountries().subscribe((data) => {
+      console.log('Retrieved countries' + JSON.stringify(data));
+      this.countries = data;
     });
   }
 
