@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <!-- shipping address form group -->
+        <!-- SHIPPING ADDRESS FORM GROUP -->
         <div formGroupName="shippingAddress" class="form-area">
           <h3>Shipping Address</h3>
 
@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-9">
               <div class="input-space">
-                <select formControlName="country">
+                <select formControlName="country" (change)="getStates('shippingAddress')">
                   @for (country of countries; track country.id) {
                     <option [ngValue]="country">
                       {{ country.name }}

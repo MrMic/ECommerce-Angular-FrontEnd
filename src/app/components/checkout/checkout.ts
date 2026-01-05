@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Luv2ShopFormService } from '../../services/luv2-shop-form.service';
 import { Country } from '../../common/country';
+import { State } from '../../common/state';
 
 @Component({
   selector: 'app-checkout',
@@ -20,6 +21,9 @@ export class Checkout {
   creditCardMonths: number[] = [];
 
   countries: Country[] = [];
+
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
 
   // *INFO: CONSTRUCTOR __________________________________________________
   constructor(
@@ -117,4 +121,20 @@ export class Checkout {
       this.creditCardMonths = data;
     });
   }
+
+  // ______________________________________________________________________
+  getStates(FormGroupName: string) {
+    const FormGroup = this.checkoutFormGroup.get(FormGroupName);
+
+    const countryCode = FormGroup?.value.country.code;
+    const countryName = FormGroup?.value.country.name;
+
+    console.log(`{FormGroupName} country code : ${countryCode}`);
+    console.log(`{FormGroupName} country name: ${countryName}`);
+
+    this.luv2ShopFormService.getStates(countryCode).subscribe(data => {
+      if (FormGroupName === 'shippingAddress') {
+
+      }
+    });
 }
