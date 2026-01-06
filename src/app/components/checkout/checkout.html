@@ -91,7 +91,11 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
-                  <option>TODO</option>
+                  @for (state of shippingAddressStates; track state) {
+                    <option [ngValue]="state">
+                      {{ state.name }}
+                    </option>
+                  }
                 </select>
               </div>
             </div>
@@ -118,7 +122,7 @@
           </label>
         </div>
 
-        <!-- billing address form group -->
+        <!-- BILLING ADDRESS FORM GROUP -->
         <div formGroupName="billingAddress" class="form-area">
           <h3>Billing Address</h3>
 
@@ -128,7 +132,7 @@
             </div>
             <div class="col-md-9">
               <div class="input-space">
-                <select formControlName="country">
+                <select formControlName="country" (change)="getStates('billingAddress')">
                   @for (country of countries; track country.id) {
                     <option [ngValue]="country">
                       {{ country.name }}
@@ -168,7 +172,11 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
-                  <option>TODO</option>
+                  @for (state of billingAddressStates; track state) {
+                    <option [ngValue]="state">
+                      {{ state.name }}
+                    </option>
+                  }
                 </select>
               </div>
             </div>

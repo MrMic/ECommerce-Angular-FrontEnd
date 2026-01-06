@@ -132,9 +132,15 @@ export class Checkout {
     console.log(`{FormGroupName} country code : ${countryCode}`);
     console.log(`{FormGroupName} country name: ${countryName}`);
 
-    this.luv2ShopFormService.getStates(countryCode).subscribe(data => {
+    this.luv2ShopFormService.getStates(countryCode).subscribe((data) => {
       if (FormGroupName === 'shippingAddress') {
-
+        this.shippingAddressStates = data;
+      } else {
+        this.billingAddressStates = data;
       }
+
+      // select first item by default
+      FormGroup?.get('state')?.setValue(data[0]);
     });
+  }
 }
