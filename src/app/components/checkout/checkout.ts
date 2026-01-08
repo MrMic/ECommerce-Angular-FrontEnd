@@ -99,6 +99,15 @@ export class Checkout {
   onSubmit() {
     console.log('Handling ths submit group');
     console.log(this.checkoutFormGroup.get('customer')?.value);
+
+    console.log(
+      'The shipping address country is: ' +
+        this.checkoutFormGroup.get('shippingAddress')?.value.country.name,
+    );
+    console.log(
+      'The shipping address state is: ' +
+        this.checkoutFormGroup.get('shippingAddress')?.value.state.name,
+    );
   }
 
   // ______________________________________________________________________
