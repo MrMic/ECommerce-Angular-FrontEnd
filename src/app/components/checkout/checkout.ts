@@ -90,8 +90,14 @@ export class Checkout {
       this.checkoutFormGroup.controls['billingAddress'].setValue(
         this.checkoutFormGroup.controls['shippingAddress'].value,
       );
+
+      // FIX: Fix for state
+      this.billingAddressStates = this.shippingAddressStates;
     } else {
       this.checkoutFormGroup.controls['billingAddress'].reset();
+
+      // FIX: Fix for state
+      this.billingAddressStates = [];
     }
   }
 
