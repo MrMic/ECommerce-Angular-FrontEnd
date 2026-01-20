@@ -92,6 +92,17 @@ export class Checkout {
     });
   }
 
+  // INFO: GETTERS ________________________________________________________
+  get firstName() {
+    return this.checkoutFormGroup.get('customer.firstName');
+  }
+  get lastName() {
+    return this.checkoutFormGroup.get('customer.lastName');
+  }
+  get email() {
+    return this.checkoutFormGroup.get('customer.email');
+  }
+
   // ______________________________________________________________________
   copyShippingAddressToBillingAddress(event: Event) {
     const target = event.target as HTMLInputElement | null;
