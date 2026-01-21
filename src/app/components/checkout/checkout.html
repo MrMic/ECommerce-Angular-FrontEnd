@@ -1,9 +1,9 @@
 <div class="main-content page-m">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
-      <!-- Checkout Form -->
+      <!-- NOTE: CHECKOUT FORM -->
       <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
-        <!-- customer form group -->
+        <!-- NOTE: CUSTOMER FORM GROUP -->
         <div formGroupName="customer" class="form-area">
           <h3>Customer</h3>
 
@@ -35,6 +35,16 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="lastName" type="text" />
+                @if (lastName && lastName.invalid && (lastName.dirty || lastName.touched)) {
+                  <div class="alert alert-danger mt-1">
+                    @if (lastName.errors?.['required']) {
+                      <div>Last Name is required.</div>
+                    }
+                    @if (lastName.errors?.['minlength']) {
+                      <div>Last Name must be at least 2 characters long</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -46,12 +56,22 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="email" type="text" />
+                @if (email && email.invalid && (email.dirty || email.touched)) {
+                  <div class="alert alert-danger mt-1">
+                    @if (email.errors?.['required']) {
+                      <div>Email is required.</div>
+                    }
+                    @if (email.errors?.['pattern']) {
+                      <div>Email must be a valid email format</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
         </div>
 
-        <!-- SHIPPING ADDRESS FORM GROUP -->
+        <!-- NOTE: SHIPPING ADDRESS FORM GROUP -->
         <div formGroupName="shippingAddress" class="form-area">
           <h3>Shipping Address</h3>
 
@@ -132,7 +152,7 @@
           </label>
         </div>
 
-        <!-- BILLING ADDRESS FORM GROUP -->
+        <!-- NOTE: BILLING ADDRESS FORM GROUP -->
         <div formGroupName="billingAddress" class="form-area">
           <h3>Billing Address</h3>
 
@@ -204,7 +224,7 @@
           </div>
         </div>
 
-        <!-- credit card form group -->
+        <!-- NOTE: CREDIT CARD FORM GROUP -->
         <div formGroupName="creditCard" class="form-area">
           <h3>Credit Card</h3>
 
@@ -297,7 +317,7 @@
           </div>
         </div>
 
-        <!-- Order details -->
+        <!-- NOTE: ORDER DETAILS -->
         <div class="form-area">
           <h3>Review Your Order</h3>
 
@@ -306,13 +326,13 @@
           <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
         </div>
 
-        <!-- submit button -->
+        <!-- NOTE: SUBMIT BUTTON -->
         <div class="text-center">
           <button class="btn btn-info" type="submit">Purchase</button>
         </div>
       </form>
 
-      <!-- Checkout Form -->
+      <!-- NOTE: CHECKOUT FORM -->
     </div>
   </div>
 </div>

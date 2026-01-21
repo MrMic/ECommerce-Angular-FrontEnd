@@ -123,6 +123,10 @@ export class Checkout {
 
   // ______________________________________________________________________
   onSubmit() {
+    if (this.checkoutFormGroup.invalid) {
+      this.checkoutFormGroup.markAllAsTouched();
+    }
+
     console.log('Handling ths submit group');
     console.log(this.checkoutFormGroup.get('customer')?.value);
 
