@@ -16,7 +16,9 @@
                 <input formControlName="firstName" type="text" />
                 @if (firstName && firstName.invalid && (firstName.dirty || firstName.touched)) {
                   <div class="alert alert-danger mt-1">
-                    @if (firstName.errors?.['required']) {
+                    @if (
+                      firstName.errors?.['required'] || firstName.errors?.['notOnlyWhitespace']
+                    ) {
                       <div>First Name is required.</div>
                     }
                     @if (firstName.errors?.['minlength']) {
@@ -37,7 +39,7 @@
                 <input formControlName="lastName" type="text" />
                 @if (lastName && lastName.invalid && (lastName.dirty || lastName.touched)) {
                   <div class="alert alert-danger mt-1">
-                    @if (lastName.errors?.['required']) {
+                    @if (lastName.errors?.['required'] || lastName.errors?.['notOnlyWhitespace']) {
                       <div>Last Name is required.</div>
                     }
                     @if (lastName.errors?.['minlength']) {
