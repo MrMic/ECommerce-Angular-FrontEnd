@@ -90,6 +90,18 @@
                     </option>
                   }
                 </select>
+
+                @if (
+                  shippingAddressCountry &&
+                  shippingAddressCountry.invalid &&
+                  (shippingAddressCountry.dirty || shippingAddressCountry.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (shippingAddressCountry.errors?.['required']) {
+                      <div>Country is required.</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
