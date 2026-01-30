@@ -240,6 +240,18 @@
                     </option>
                   }
                 </select>
+
+                @if (
+                  billingAddressCountry &&
+                  billingAddressCountry.invalid &&
+                  (billingAddressCountry.dirty || billingAddressCountry.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (billingAddressCountry.errors?.['required']) {
+                      <div>Country is required.</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -251,6 +263,21 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="street" type="text" />
+
+                @if (
+                  billingAddressStreet &&
+                  billingAddressStreet.invalid &&
+                  (billingAddressStreet.dirty || billingAddressStreet.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (
+                      billingAddressStreet.errors?.['required'] ||
+                      billingAddressStreet.errors?.['notOnlyWhitespace']
+                    ) {
+                      <div>Street is required.</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -262,6 +289,21 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="city" type="text" />
+
+                @if (
+                  billingAddressCity &&
+                  billingAddressCity.invalid &&
+                  (billingAddressCity.dirty || billingAddressCity.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (
+                      billingAddressCity.errors?.['required'] ||
+                      billingAddressCity.errors?.['notOnlyWhitespace']
+                    ) {
+                      <div>City is required.</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -279,6 +321,20 @@
                     </option>
                   }
                 </select>
+
+                @if (
+                  billingAddressState &&
+                  billingAddressState.invalid &&
+                  (billingAddressState.dirty || billingAddressState.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (
+                      billingAddressState.errors?.['required']
+                    ) {
+                      <div>State is required.</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -290,10 +346,24 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="zipCode" type="text" />
+
+                @if (
+                  billingAddressZipCode &&
+                  billingAddressZipCode.invalid &&
+                  (billingAddressZipCode.dirty || billingAddressZipCode.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (
+                      billingAddressZipCode.errors?.['required'] ||
+                      billingAddressZipCode.errors?.['notOnlyWhitespace']
+                    ) {
+                      <div>City is required.</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
-        </div>
 
         <!-- NOTE: CREDIT CARD FORM GROUP -->
         <div formGroupName="creditCard" class="form-area">
