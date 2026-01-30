@@ -328,9 +328,7 @@
                   (billingAddressState.dirty || billingAddressState.touched)
                 ) {
                   <div class="alert alert-danger mt-1">
-                    @if (
-                      billingAddressState.errors?.['required']
-                    ) {
+                    @if (billingAddressState.errors?.['required']) {
                       <div>State is required.</div>
                     }
                   </div>
@@ -357,13 +355,14 @@
                       billingAddressZipCode.errors?.['required'] ||
                       billingAddressZipCode.errors?.['notOnlyWhitespace']
                     ) {
-                      <div>City is required.</div>
+                      <div>Zip code is required.</div>
                     }
                   </div>
                 }
               </div>
             </div>
           </div>
+        </div>
 
         <!-- NOTE: CREDIT CARD FORM GROUP -->
         <div formGroupName="creditCard" class="form-area">
