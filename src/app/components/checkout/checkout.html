@@ -475,17 +475,22 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="securityCode" type="text" />
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-2">
-              <label>Card Number</label>
-            </div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <input formControlName="cardNumber" type="text" />
+                @if (
+                  creditCardSecurityCode &&
+                  creditCardSecurityCode.invalid &&
+                  (creditCardSecurityCode.dirty || creditCardSecurityCode.touched)
+                ) {
+                  <div class="alert alert-danger mt-1">
+                    @if (creditCardSecurityCode.errors?.['required']) {
+                      <div>Security code is required.</div>
+                    }
+
+                    @if (creditCardSecurityCode.errors?.['pattern']) {
+                      <div>Security code must be 3 digits long</div>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
