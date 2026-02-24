@@ -39,6 +39,8 @@ export class Checkout {
     private luv2ShopFormService: Luv2ShopFormService,
     private cartService: CartService,
   ) {
+    this.reviewCartDetails();
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', [
@@ -128,6 +130,20 @@ export class Checkout {
     this.luv2ShopFormService.getCountries().subscribe((data) => {
       console.log('Retrieved countries' + JSON.stringify(data));
       this.countries = data;
+    });
+  }
+
+  // INFO: Retrieve totalQuantity and totalPrice
+  reviewCartDetails() {
+    // subscribe to cartService.totalQuantity
+    this.cartService.totalQuantity.subscribe((data) => {
+      console.log('Retrieved totalQuantity' + JSON.stringify(data));
+      this.totalQuantity = data;
+    });
+    // subscribe to cartService.totalPrice
+    this.cartService.totalPrice.subscribe((data) => {
+      console.log('Retrieved totalPrice' + JSON.stringify(data));
+      this.totalPrice = data;
     });
   }
 
