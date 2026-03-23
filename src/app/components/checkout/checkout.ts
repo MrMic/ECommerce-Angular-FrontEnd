@@ -12,6 +12,8 @@ import { Country } from '../../common/country';
 import { State } from '../../common/state';
 import { Luv2ShopValidators } from '../../validators/luv2-shop-validators';
 import { CartService } from '../../services/cart.service';
+import { CheckoutService } from '../../services/checkout.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -38,6 +40,8 @@ export class Checkout {
     private formBuilder: FormBuilder,
     private luv2ShopFormService: Luv2ShopFormService,
     private cartService: CartService,
+    private checkoutService: CheckoutService,
+    private router: Router,
   ) {
     this.reviewCartDetails();
 
@@ -225,19 +229,38 @@ export class Checkout {
   onSubmit() {
     if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
+      return;
     }
 
-    console.log('Handling ths submit group');
-    console.log(this.checkoutFormGroup.get('customer')?.value);
+    // Set up order
 
-    console.log(
-      'The shipping address country is: ' +
-        this.checkoutFormGroup.get('shippingAddress')?.value.country.name,
-    );
-    console.log(
-      'The shipping address state is: ' +
-        this.checkoutFormGroup.get('shippingAddress')?.value.state.name,
-    );
+    // Get cart items
+
+    // create orderItems from cartItems
+
+    // Set up purchase
+
+    // populate purchase - customer
+
+    // populate purchase - shipping address
+
+    // populate purchase - billing address
+
+    // populate purchase - order & orderItems
+
+    // Call REST API via CheckoutService
+
+    // console.log('Handling ths submit group');
+    // console.log(this.checkoutFormGroup.get('customer')?.value);
+    //
+    // console.log(
+    //   'The shipping address country is: ' +
+    //     this.checkoutFormGroup.get('shippingAddress')?.value.country.name,
+    // );
+    // console.log(
+    //   'The shipping address state is: ' +
+    //     this.checkoutFormGroup.get('shippingAddress')?.value.state.name,
+    // );
   }
 
   // ______________________________________________________________________
