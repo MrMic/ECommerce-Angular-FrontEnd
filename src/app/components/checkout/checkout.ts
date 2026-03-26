@@ -14,6 +14,8 @@ import { Luv2ShopValidators } from '../../validators/luv2-shop-validators';
 import { CartService } from '../../services/cart.service';
 import { CheckoutService } from '../../services/checkout.service';
 import { Router } from '@angular/router';
+import { Order } from '../../common/order';
+import { OrderItem } from '../../common/order-item';
 
 @Component({
   selector: 'app-checkout',
@@ -225,7 +227,7 @@ export class Checkout {
     }
   }
 
-  // ______________________________________________________________________
+  // INFO: SUBMIT _________________________________________________________
   onSubmit() {
     if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
@@ -233,10 +235,22 @@ export class Checkout {
     }
 
     // Set up order
+    let order = new Order();
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
 
     // Get cart items
+    const cartItems = this.cartService.cartItems;
 
     // create orderItems from cartItems
+    // INFO: - long way
+    // let orderItems: OrderItem[] = [];
+    // for (let i = 0; i < cartItems.length; i++) {
+    //   orderItems[i] = new OrderItem(cartItems[i]);
+    // }
+
+    // INFO: - short way of doing the same thing
+    let orderItems: OrderItem[] = cartItems.map((tempCartItem) => new OrderItem(tempCartItem));
 
     // Set up purchase
 
