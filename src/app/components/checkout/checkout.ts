@@ -16,6 +16,7 @@ import { CheckoutService } from '../../services/checkout.service';
 import { Router } from '@angular/router';
 import { Order } from '../../common/order';
 import { OrderItem } from '../../common/order-item';
+import { Purchase } from '../../common/purchase';
 
 @Component({
   selector: 'app-checkout',
@@ -253,12 +254,24 @@ export class Checkout {
     let orderItems: OrderItem[] = cartItems.map((tempCartItem) => new OrderItem(tempCartItem));
 
     // Set up purchase
+    let purchase = new Purchase();
 
     // populate purchase - customer
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
 
     // populate purchase - shipping address
+    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress?.state));
+    const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress?.country));
+    purchase.shippingAddress!.state = shippingState.name;
+    purchase.shippingAddress!.country = shippingCountry.name;
 
     // populate purchase - billing address
+    purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+    const billingState: State = JSON.parse(JSON.stringify(purchase.billingAddress?.state));
+    const billingCountry: Country = JSON.parse(JSON.stringify(purchase.billingAddress?.country));
+    purchase.billingAddress!.state = billingState.name;
+    purchase.billingAddress!.country = billingCountry.name;
 
     // populate purchase - order & orderItems
 
