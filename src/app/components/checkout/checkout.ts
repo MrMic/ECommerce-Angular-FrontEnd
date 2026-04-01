@@ -274,20 +274,36 @@ export class Checkout {
     purchase.billingAddress!.country = billingCountry.name;
 
     // populate purchase - order & orderItems
+    purchase.order = order;
+    purchase.orderItems = orderItems;
 
     // Call REST API via CheckoutService
+    this.checkoutService.placeOrder(purchase).subscribe({
+      next: (response) => {
+        alert(
+          `Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`,
+        );
+        // reset the cart
+        this.resetCart();
+      },
+      error: (err) => {
+        alert(`There was an error: ${err.message}`);
+      },
+    });
+  }
 
-    // console.log('Handling ths submit group');
-    // console.log(this.checkoutFormGroup.get('customer')?.value);
-    //
-    // console.log(
-    //   'The shipping address country is: ' +
-    //     this.checkoutFormGroup.get('shippingAddress')?.value.country.name,
-    // );
-    // console.log(
-    //   'The shipping address state is: ' +
-    //     this.checkoutFormGroup.get('shippingAddress')?.value.state.name,
-    // );
+  // ______________________________________________________________________
+  resetCart() {
+    // Reset cart data
+    this.cartService.cartItems = [];
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQuantity.next(0);
+
+    // Reset the form data
+    this.checkoutFormGroup.reset();
+
+    // Navigate to the main products page
+    this.router.navigateByUrl('/products');
   }
 
   // ______________________________________________________________________
